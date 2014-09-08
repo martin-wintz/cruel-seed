@@ -1,0 +1,26 @@
+{
+  "name": "leanmean-seed",
+  "version": "0.0.0",
+  "description": "A MEAN stack application.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/MaybiusStrip/leanmean-seed.git"
+  },
+  "author": "Martin Wintz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MaybiusStrip/leanmean-seed/issues"
+  },
+  "homepage": "https://github.com/MaybiusStrip/leanmean-seed",
+  "dependencies": {
+    "express": "^4.8.8"
+  },
+  "devDependencies": {
+    "gulp": "^3.8.8",
+    "gulp-nodemon": "^1.0.4"
+  }
+}
