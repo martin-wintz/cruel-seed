@@ -1,37 +1,50 @@
 var gulp = require('gulp');
 var nodemon = require('gulp-nodemon');
-var del = require('del');
+var clean = require('gulp-clean');
 var browserify = require('gulp-browserify');
 
 var paths = {
-  markup: 'client/index.html',
-  logic: 'client/index.js',
+  src: {
+    markupIndex: 'client/index.html',
+    markup: 'client/**/*.html',
+    logicIndex: 'client/index.js',
+    logic: 'client/**/*.js'
+  },
   build: 'build',
+  lib: 'build/lib',
   server: 'server/index.js'
 };
 
-gulp.task('local', function () {
+
+gulp.task('clean', function (cb) {
+  return gulp.src(paths.build).pipe(clean());
+});
+
+gulp.task('build-markup', ['clean'], function () {
+  return gulp.src(paths.src.markupIndex).pipe(gulp.dest(paths.build));
+});
+
+gulp.task('build-logic', ['clean'], function () {
+  return gulp.src(paths.src.logicIndex)
+    .pipe(browserify())
+    .pipe(gulp.dest(paths.lib));
+});
+
+gulp.task('watch', function () {
+  gulp.watch(paths.src.logic, ['build']);
+  gulp.watch(paths.src.markup, ['build']);
+});
+
+gulp.task('build', ['build-markup', 'build-logic']);
+
+
+gulp.task('local', ['build'], function () {
   nodemon({
     script: paths.server,
     ext: 'js'
   });
 });
 
-gulp.task('build-markup', function () {
-  gulp.src(paths.markup).pipe(gulp.dest(paths.build));
-});
 
-gulp.task('build-logic', function () {
-  gulp.src(paths.logic)
-    .pipe(browserify({
-      transform: ['debowerify']
-    }))
-    .pipe(gulp.dest(paths.build));
-});
-
-gulp.task('clean', function (callback) {
-  del(['build'], callback);
-});
-
-gulp.task('default', ['local']);
+gulp.task('default', ['build', 'local', 'watch']);
 
