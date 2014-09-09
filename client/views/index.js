@@ -1,13 +1,28 @@
 'use strict';
 
-module.exports = function (app) {
+var angular = require('angular');
+
+
+module.exports.ngModule = angular.module('views', []);
+
+module.exports.init = function (app) {
+
+  app.config(function ($locationProvider) {
+    $locationProvider.html5Mode(true);
+  });
+
+  require('./controller')(module.exports.ngModule);
+
   app.config(function ($stateProvider) {
     $stateProvider
       .state('app', {
-        url: '/',
-        views: 'index.html',
-        controller: require('./controller')(app)
+        url: '/test',
+        templateUrl: 'index.html',
+        controller: 'TestController'
       });
   });
+
 };
+
+
 

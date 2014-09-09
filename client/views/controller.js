@@ -1,7 +1,9 @@
 'use strict';
 
-module.exports = function (app) {
-  app.controller('index', function ($scope) {
+module.exports = function (module) {
+
+  module.controller('TestController', function ($scope) {
     $scope.helloWord = 'Hello World';
   });
+
 };

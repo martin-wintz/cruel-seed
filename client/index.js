@@ -2,16 +2,16 @@
 
 var angular = require('angular');
 
+var views = require('./views');
+
+
 var dependencies = [
-  'ui.router'
+  require('angular-ui-router'),
+  views.ngModule.name
 ];
 
-var app = _initializeApp(dependencies);
-require('./views')(app);
 
+var app = angular.module('app', dependencies);
 
-function _initializeApp(dependencies) {
-  return angular.module('app', dependencies);
-}
-
+views.init(app);
 
