@@ -8,5 +8,5 @@
   "strict": true,
   "maxparams": 4,
   "maxstatements": 5,
-  "maxlen": 100
+  "maxlen": 120
 }
