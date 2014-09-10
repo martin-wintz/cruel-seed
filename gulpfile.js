@@ -1,3 +1,5 @@
+'use strict';
+
 var gulp = require('gulp');
 var nodemon = require('gulp-nodemon');
 var clean = require('gulp-rimraf');
@@ -16,7 +18,7 @@ var paths = {
 };
 
 
-gulp.task('clean', function (cb) {
+gulp.task('clean', function () {
   return gulp.src(paths.build).pipe(clean());
 });
 
@@ -26,7 +28,9 @@ gulp.task('build-markup', ['clean'], function () {
 
 gulp.task('build-logic', ['clean'], function () {
   return gulp.src(paths.src.logicIndex)
-    .pipe(browserify())
+    .pipe(browserify({
+      debug: true
+    }))
     .pipe(gulp.dest(paths.lib));
 });
 
