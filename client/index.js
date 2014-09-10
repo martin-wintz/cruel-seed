@@ -2,6 +2,7 @@
 
 var angular = require('angular');
 
+var templateCache = require('./templateCache');
 var views = require('./views');
 
 
@@ -13,5 +14,9 @@ var dependencies = [
 
 var app = angular.module('app', dependencies);
 
-views.init(app);
+templateCache.init(__dirname, app, function () {
+  if (err) { throw err; }
+
+  views.init(app);
+});
 

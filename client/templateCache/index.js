@@ -4,17 +4,13 @@ var findit = require('findit');
 var fs = require('fs');
 var path = require('path');
 
-require.extensions['.html'] = function (module, filename) {
-  module.exports = fs.readFileSync(filename, 'utf8');
-};
-
 
 var ALREADY_INITIALIZED_ERROR = new Error('Template already initialized. Can only be initialized once.');
 var initialized = false;
 var app;
 
 
-module.exports.initialize = function (dir, _app, callback) {
+module.exports.init = function (dir, _app, callback) {
 
   app = _app;
   if (initialized) return callback(ALREADY_INITIALIZED_ERROR);
@@ -47,9 +43,10 @@ function _processFile(file) {
 function _registerTemplate(templatePath) {
 
   app.run(function($templateCache) {
+    var contents = fs.readFileSync(path.join('../', templatePath), 'utf8');
     $templateCache.put(
       templatePath,
-      require(path.join('../', templatePath))
+      contents
     );
   });
 
