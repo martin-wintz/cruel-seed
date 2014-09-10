@@ -1,6 +1,6 @@
 var gulp = require('gulp');
 var nodemon = require('gulp-nodemon');
-var clean = require('gulp-clean');
+var clean = require('gulp-rimraf');
 var browserify = require('gulp-browserify');
 
 var paths = {
