@@ -3,8 +3,17 @@
 var angular = require('angular');
 var namer = require('../namer');
 
+var subview1 = require('./subview1');
 
-module.exports.ngModule = angular.module('views', []);
+var dependencies = [
+  subview1.ngModule.name
+];
+
+module.exports.ngModule = angular.module('views', dependencies);
+
+
+subview1.init(module.exports.ngModule);
+
 
 module.exports.init = function (app) {
 
