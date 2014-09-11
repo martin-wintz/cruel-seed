@@ -30,7 +30,7 @@ function _bindRoute(app, module) {
     $stateProvider
       .state('app', {
         url: '/',
-        templateUrl: 'index.html',
+        templateUrl: 'views/index.html',
         controller: namer.controller(module)
       });
   });
