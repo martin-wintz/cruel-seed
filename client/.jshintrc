@@ -5,8 +5,5 @@
   "indent": 2,
   "undef": true,
   "unused": true,
-  "strict": true,
-  "maxparams": 4,
-  "maxstatements": 5,
-  "maxlen": 120
+  "strict": true
 }
