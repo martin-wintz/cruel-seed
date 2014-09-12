@@ -59,10 +59,9 @@ function _bindRoute(app, module, relativePath, controller) {
 
 function _generateStateName(relativePath) {
 
-  var relativePathComponents = relativePath.split('/');
+  var relativePathComponents = _.without(relativePath.split('/'), '');
   relativePathComponents = ['views'].concat(relativePathComponents);
-  var viewName = relativePathComponents.join('.');
-  return viewName.slice(0, viewName.length - 1);
+  return relativePathComponents.join('.');
 
 }
 
