@@ -1,5 +1,5 @@
 {
-  "name": "leanmean-seed",
+  "name": "cruel-seed",
   "version": "0.0.0",
   "description": "A MEAN stack application.",
   "main": "index.js",
@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/MaybiusStrip/leanmean-seed.git"
+    "url": "git://github.com/MaybiusStrip/cruel-seed.git"
   },
   "author": "Martin Wintz",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/MaybiusStrip/leanmean-seed/issues"
+    "url": "https://github.com/MaybiusStrip/cruel-seed/issues"
   },
-  "homepage": "https://github.com/MaybiusStrip/leanmean-seed",
+  "homepage": "https://github.com/MaybiusStrip/cruel-seed",
   "dependencies": {
     "angular": "^1.2.23",
     "angular-ui-router": "^0.2.10",
