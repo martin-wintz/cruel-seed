@@ -7,6 +7,8 @@ var nodemon = require('gulp-nodemon');
 var clean = require('gulp-rimraf');
 var browserify = require('gulp-browserify');
 var templateCache = require('gulp-angular-templatecache');
+var livereload = require('gulp-livereload');
+livereload.listen();
 
 var paths = {
   src: {
@@ -40,7 +42,8 @@ gulp.task('build-templates', ['clean'], function () {
 
   return gulp.src(paths.src.markup)
     .pipe(templateCache({ module: 'app' }))
-    .pipe(gulp.dest(paths.lib));
+    .pipe(gulp.dest(paths.lib))
+    .pipe(livereload());
 
 });
 
@@ -52,7 +55,8 @@ gulp.task('build-logic', ['clean'], function () {
       basedir: './client',
       debug: true
     }))
-    .pipe(gulp.dest(paths.lib));
+    .pipe(gulp.dest(paths.lib))
+    .pipe(livereload());
 
 });
 
