@@ -6,7 +6,6 @@ module.exports = function (module) {
 
   module.controller(namer.controller(module), function ($scope) {
     $scope.helloWorld = 'Hello Martin';
-    console.log('test');
   });
 
 };
