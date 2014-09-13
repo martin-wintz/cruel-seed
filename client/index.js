@@ -12,6 +12,14 @@ var dependencies = [
 
 
 var app = angular.module('app', dependencies);
-
+_setHTML5Mode(app);
 views.init(app);
+
+function _setHTML5Mode(app) {
+
+  app.config(function ($locationProvider) {
+    $locationProvider.html5Mode(true);
+  });
+
+}
 

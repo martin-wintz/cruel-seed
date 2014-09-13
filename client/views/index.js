@@ -15,17 +15,7 @@ module.exports.ngModule = view.module;
 
 module.exports.init = function (app) {
 
-  _setHTML5Mode(app);
   view.init(app, require('./controller'));
 
 };
-
-
-function _setHTML5Mode(app) {
-
-  app.config(function ($locationProvider) {
-    $locationProvider.html5Mode(true);
-  });
-
-}
 
