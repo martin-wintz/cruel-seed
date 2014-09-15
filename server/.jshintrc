@@ -1,0 +1,9 @@
+{
+  "node": true,
+  "camelcase": true,
+  "eqeqeq": true,
+  "indent": 2,
+  "undef": true,
+  "unused": true,
+  "strict": true
+}
