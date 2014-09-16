@@ -16,6 +16,18 @@ module.exports.initialize = function () {
 
   var app = express();
 
+  _setupExpressMiddleware(app);
+  _setupViews(app);
+  _setupErrorHandlers(app);
+
+  app.listen(3000);
+
+  return app;
+
+};
+
+function _setupExpressMiddleware(app) {
+
   app.use(compression());
 
   app.use(cookieParser());
@@ -28,9 +40,12 @@ module.exports.initialize = function () {
   app.use(session({
     saveUninitialized: true,
     resave: true,
-    secret: config.sessionSecret
+    secret: config.session.secret
   }));
 
+}
+
+function _setupViews(app) {
 
   app.set('views', path.join(root, 'build'));
   app.engine('html', require('ejs').renderFile);
@@ -40,10 +55,19 @@ module.exports.initialize = function () {
     res.render('index.html');
   });
 
+}
 
-  app.listen(3000);
+function _setupErrorHandlers(app) {
 
+  app.use(function(err, req, res) {
 
-  return app;
+    var errorData = { message: err.message, };
 
-};
+    errorData.error = (process.env.NODE_ENV === 'dev') ? err : {};
+
+    res.status(err.status || 500);
+    res.render('error', errorData);
+
+  });
+
+}
