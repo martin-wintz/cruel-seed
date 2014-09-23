@@ -17,6 +17,7 @@ module.exports.initialize = function () {
   var app = express();
 
   _setupExpressMiddleware(app);
+  _setupRoutes(app);
   _setupViews(app);
   _setupErrorHandlers(app);
 
@@ -43,6 +44,10 @@ function _setupExpressMiddleware(app) {
     secret: config.session.secret
   }));
 
+}
+
+function _setupRoutes(app) {
+  require('../controllers').bindRoutes(app);
 }
 
 function _setupViews(app) {
